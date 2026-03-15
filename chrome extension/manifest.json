@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Autotrader Scrape OCR",
+  "version": "0.2.0",
+  "description": "OCR clipboard image, build an AutoTrader search, and analyze listing prices/mileages.",
+  "permissions": ["clipboardRead", "activeTab", "scripting", "storage", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Autotrader Scrape"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tesseract.min.js",
+        "tesseract-core.wasm",
+        "tesseract-worker.js",
+        "eng.traineddata.gz"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

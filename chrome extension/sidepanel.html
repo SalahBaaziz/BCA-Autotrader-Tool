@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoTrader Insight</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <h1>AutoTrader Insight</h1>
+          <p>Select a vehicle card, open AutoTrader search, then analyze prices and mileages.</p>
+        </div>
+        <div class="status-pill" id="ocrStatus">Ready</div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>1. Select Vehicle</h2>
+          <button id="selectCar" class="primary">Select Card</button>
+        </div>
+        <div id="parsedDetails" class="details-grid">No data yet</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>2. Open AutoTrader Search</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            Min mileage
+            <input id="minMileage" type="number" min="0" step="1000" placeholder="0" />
+          </label>
+          <label>
+            Max mileage
+            <input id="maxMileage" type="number" min="0" step="1000" placeholder="100000" />
+          </label>
+          <label>
+            Min year
+            <input id="minYear" type="number" min="1970" step="1" placeholder="2015" />
+          </label>
+          <label>
+            Max year
+            <input id="maxYear" type="number" min="1970" step="1" placeholder="2020" />
+          </label>
+        </div>
+        <div class="row">
+          <button id="openSearch" class="primary" disabled>Open Search</button>
+          <button id="acceptCookies">Accept Cookies</button>
+        </div>
+        <div class="url-box">
+          <div class="url-label">Generated URL</div>
+          <div id="searchUrl" class="url-value">No URL yet</div>
+          <button id="copyUrl">Copy URL</button>
+          <div id="debugValues" class="url-debug">Debug: waiting for selection</div>
+        </div>
+        <div class="hint">Uses the selected vehicle details to build a search.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>3. Analyze Listings</h2>
+          <button id="analyzePage" class="primary">Analyze AutoTrader</button>
+        </div>
+        <div class="metrics" id="analysisSummary">No analysis yet</div>
+        <div class="charts">
+          <div class="chart-block">
+            <div class="chart-title">Price Distribution</div>
+            <canvas id="priceHistogram" width="340" height="200"></canvas>
+          </div>
+          <div class="chart-block">
+            <div class="chart-title">Mileage vs Price Heatmap</div>
+            <canvas id="scatterPlot" width="340" height="220"></canvas>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

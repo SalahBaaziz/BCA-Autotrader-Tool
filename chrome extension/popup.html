@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autotrader Scrape</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <h1>AutoTrader Insight</h1>
+          <p>Select a vehicle card, open AutoTrader search, then analyze prices and mileages.</p>
+        </div>
+        <div class="status-pill" id="ocrStatus">Ready</div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>1. Select Vehicle</h2>
+          <button id="selectCar" class="primary">Select Card</button>
+        </div>
+        <div id="parsedDetails" class="details-grid">No data yet</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>2. Open AutoTrader Search</h2>
+          <div class="row">
+            <button id="openSearch" class="primary" disabled>Open Search</button>
+            <button id="acceptCookies">Accept Cookies</button>
+          </div>
+        </div>
+        <div class="hint">Uses the selected vehicle details to build a search.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>3. Analyze Listings</h2>
+          <button id="analyzePage" class="primary">Analyze AutoTrader</button>
+        </div>
+        <div class="metrics" id="analysisSummary">No analysis yet</div>
+        <div class="charts">
+          <canvas id="priceHistogram" width="320" height="180"></canvas>
+          <canvas id="scatterPlot" width="320" height="180"></canvas>
+        </div>
+      </section>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
